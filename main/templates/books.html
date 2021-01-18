@@ -8,10 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        {% for book in book_store %}
-            <h3>{{ book.name }} - {{ book.title }} - {{ book.subtitle }}</h3>
-        {% endfor %}
-    </div>
+    {% for book in book_store %}
+        <h3>{{ book.name }}</h3> 
+        <h3>{{ book.title }}</h3> 
+        <h3>{{ book.subtitle }}</h3>
+    {% endfor %}
 </body>
 </html>
