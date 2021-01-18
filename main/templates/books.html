@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div>
+        {% for book in book_store %}
+            <h3>{{ book.name }} - {{ book.title }} - {{ book.subtitle }}</h3>
+        {% endfor %}
+    </div>
 </body>
 </html>
