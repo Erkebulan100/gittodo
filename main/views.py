@@ -42,16 +42,9 @@ def add_book(request):
     book = Book(name=name, title=title, subtitle=subtitle, description=description, genre=genre, author=author, year=year, price = price)
     book.save()
     return redirect(test2)
-    # return HttpResponse("Form received")
-    # ,
-    # ,
-    # ,    cost = form["book_cost"]
-    # ,cost=cost
-    # ,    
-    # ,
-    
-    # book = Book(book=book, title=title, genre=genre, , )
-    # book.save()
-    # 
-   
-    # return 
+
+
+def delete_todo(request, id): 
+    todo = ToDo.objects.get(id=id)
+    todo.delete()
+    return redirect(test)
