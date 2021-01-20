@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo</title>
     <!-- <link rel = "stylesheet" href = "./styles/index.css" /> -->
-    <link rel = "stylesheet" href = "{% static 'styles/index.css' %}" />
+    <link rel = "stylesheet" href = "{% static 'styles/index.css' %}" /><br>
+
     <link rel = "stylesheet" href = "{% static 'styles/checkbox.css' %}" />
 </head>
 <body>
@@ -18,12 +19,16 @@
     {% endfor %} -->
     <section>
         <div class = 'create_container'>
-            <input
-                class = "create_input"
-                type = "text" 
-                placeholder="Write here a new task"
-            />
-            <button class = 'create_button'>Add</button>
+            <form action="{% url 'add_todo' %}" method="POST">
+                {% csrf_token %}
+                <input
+                    class = "create_input"
+                    type = "text" 
+                    placeholder="Write here a new task"
+                    name="todo_text"
+                />
+                <button class = 'create_button'>Add</button>
+            </form>
         </div>
         <div class ="todo_container">
             {% for todo in todo_list %}
@@ -39,7 +44,7 @@
                     <p>{{ todo.created_at }}</p>
                     <div class = "action_buttons">
                         <img src = "{% static './icons/unmarked.png' %}" />
-
+                        
                         <img src = "{% static './icons/delete.png' %}" />
                     </div>                     
                 </div>

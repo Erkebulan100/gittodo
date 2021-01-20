@@ -5,13 +5,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>test2</title>
+    <!-- <link rel = "stylesheet" href = "{% static 'styles/checkbox.css' %}" /> -->
+    <link rel = "stylesheet" href = "{% static 'styles/index.css' %}" />
 </head>
 <body>
-    {% for book in book_store %}
-        <h3>{{ book.name }}</h3> 
-        <h3>{{ book.title }}</h3> 
-        <h3>{{ book.subtitle }}</h3>
-    {% endfor %}
+    <section>
+        <div class = 'create_container'>
+            <form action="{% url 'add-book' %}" method="POST"> <!--"{% url 'add_todo' %}"-->
+                {% csrf_token %}
+                <input
+                    class = "create_input"
+                    type = "text" 
+                    placeholder="Write here the book name"
+                    name="book_name"
+                /><!-- name = "todo_text" -->
+
+                <input
+                    class = "create_input"
+                    type = "text" 
+                    placeholder="Write here the title"
+                    name="book_title"
+                /><!-- name = "todo_text" -->
+
+                <input
+                    class = "create_input"
+                    type = "text" 
+                    placeholder="Write here the subtitle"
+                    name="book_subtitle"
+                />
+
+                <input
+                class = "create_input"
+                type = "text" 
+                placeholder="Write here the description"
+                name="book_description"
+                />
+                
+                <input
+                class = "create_input"
+                type = "text" 
+                placeholder="Write here the genre"
+                name="book_genre"
+                />
+                
+                <input
+                class = "create_input"
+                type = "text" 
+                placeholder="Write here the author name"
+                name="book_author"
+                />
+                    
+                <input
+                class = "create_input"
+                type = "text" 
+                placeholder="Write here the printing year"
+                name="book_year"
+                />
+                <input
+                    class = "create_input"
+                    type = "text" 
+                    placeholder="Write here the book price"
+                    name="book_price"
+                />
+                <button class = 'create_button'>Add</button>
+            </form>
+        </div>
+        <div class ="todo_container">
+            {% for book in book_store %}
+                <div class="todo_item">
+                    <div class = "todo_item_header">
+                        <h3>{{ book.name }} - {{ book.title }} - {{ book.subtitle }} - {{ book.description }} - {{ book.cost }} - {{ book.genre }} - {{ book.author }} - {{ book.year }}
+                        </h3> 
+                    </div>
+                </div>
+            {% endfor %}
+    </section>
 </body>
 </html>

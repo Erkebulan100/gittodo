@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .models import ToDo, Book
 
 # Create your views here.
@@ -21,3 +21,37 @@ def test2(request):
 
 def third(request):
     return HttpResponse("This is page test3")
+
+def add_todo(request):
+    form = request.POST
+    text = form["todo_text"]
+    print(text)
+    todo = ToDo(text=text)
+    todo.save()
+    return redirect(test)
+def add_book(request):
+    form = request.POST
+    name = form["book_name"]
+    title = form["book_title"]
+    subtitle = form["book_subtitle"]
+    description = form["book_description"]
+    genre = form["book_genre"]
+    author = form["book_author"]
+    year = form["book_year"]
+    price = form["book_price"]
+    book = Book(name=name, title=title, subtitle=subtitle, description=description, genre=genre, author=author, year=year, price = price)
+    book.save()
+    return redirect(test2)
+    # return HttpResponse("Form received")
+    # ,
+    # ,
+    # ,    cost = form["book_cost"]
+    # ,cost=cost
+    # ,    
+    # ,
+    
+    # book = Book(book=book, title=title, genre=genre, , )
+    # book.save()
+    # 
+   
+    # return 
