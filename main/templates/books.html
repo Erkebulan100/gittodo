@@ -19,14 +19,14 @@
                     type = "text" 
                     placeholder="Write here the book name"
                     name="book_name"
-                /><!-- name = "todo_text" -->
+                />
 
                 <input
                     class = "create_input"
                     type = "text" 
                     placeholder="Write here the title"
                     name="book_title"
-                /><!-- name = "todo_text" -->
+                />
 
                 <input
                     class = "create_input"
@@ -34,7 +34,6 @@
                     placeholder="Write here the subtitle"
                     name="book_subtitle"
                 />
-
                 <input
                 class = "create_input"
                 type = "text" 
@@ -73,13 +72,32 @@
         </div>
         <div class ="todo_container">
             {% for book in book_store %}
-                <div class="todo_item">
+                <div class="todo_item
+                    {% if book.is_favorite %}
+                        marked
+                    {% endif %}
+                ">
                     <div class = "todo_item_header">
                         <h3>{{ book.name }} - {{ book.title }} - {{ book.subtitle }} - {{ book.description }} - {{ book.cost }} - {{ book.genre }} - {{ book.author }} - {{ book.year }}
                         </h3> 
                     </div>
+                    <div class = "todo_item_footer">
+                        
+                        <div class = "action_buttons">
+                            
+                            {% if book.is_favorite %}
+                                <a href="{% url 'mark-book' book.id %}"><img src = "{% static './icons/marked.png' %}" /></a>
+                            {% else %}
+                                <a href="{% url 'mark-book' book.id %}"><img src = "{% static './icons/unmarked.png' %}" /></a>
+                            {% endif %}
+
+                            <a href="{% url 'delete-book' book.id %}"><img src = "{% static './icons/delete.png' %}"/></a>
+                            
+                        </div>                     
+                    </div>
                 </div>
-            {% endfor %}
+        {% endfor %}
+        </div>
     </section>
 </body>
 </html>

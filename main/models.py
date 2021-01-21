@@ -16,10 +16,12 @@ class ToDo(models.Model):
 
 class Book(models.Model):
     name = models.CharField(max_length=150)
+    is_favorite = models.BooleanField(default = False)
+    go_to_details = models.BooleanField(default=False)
     title = models.CharField(max_length=150)
     subtitle = models.CharField(max_length=150)
     description = models.TextField()
     price = models.TextField()
     genre = models.CharField(max_length=150)
     author = models.CharField(max_length=150)
-    year = models.DateTimeField(auto_now_add = True)
+    year = models.CharField(max_length=150)
