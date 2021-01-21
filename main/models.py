@@ -13,7 +13,7 @@ class ToDo(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     is_closed = models.BooleanField(default = False)
     is_favorite = models.BooleanField(default = False)
-
+    is_not_favorite = models.BooleanField(default=False)
 class Book(models.Model):
     name = models.CharField(max_length=150)
     is_favorite = models.BooleanField(default = False)

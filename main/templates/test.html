@@ -35,6 +35,8 @@
             <div class="todo_item
                 {% if todo.is_favorite %}
                     marked
+                {% elif todo.is_favorite == False %}
+                    todo_item
                 {% endif %}
             ">
                 <div class = "todo_item_header">
@@ -50,7 +52,7 @@
                         {% if todo.is_favorite %}
                             <a href="{% url 'mark-todo' todo.id %}"><img src = "{% static './icons/marked.png' %}" /></a>
                         {% else %}
-                            <a href="{% url 'mark-todo' todo.id %}"><img src = "{% static './icons/unmarked.png' %}" /></a>
+                            <a href="{% url 'unmark-todo' todo.id %}"><img src = "{% static './icons/unmarked.png' %}" /></a>
                         {% endif %}
 
 
